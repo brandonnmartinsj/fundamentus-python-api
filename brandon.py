@@ -5,6 +5,8 @@
 import csv
 from datetime import date
 
+import pandas as pd
+
 import re
 import urllib.request
 import urllib.parse
@@ -13,6 +15,11 @@ import http.cookiejar
 from lxml.html import fragment_fromstring
 from collections import OrderedDict
 from decimal import Decimal
+
+
+df = pd.read_json('http://localhost:5000/')
+df.to_json('data.json')
+
 
 def get_data(*args, **kwargs):
     url = 'http://www.fundamentus.com.br/resultado.php'

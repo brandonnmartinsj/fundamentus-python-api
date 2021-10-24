@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    
+    <style>
+        table {
+            border-collapse: collapse;
+        }
+        th {
+            background-color:green;
+            Color:white;
+        }
+        th, td {
+            width:150px;
+            text-align:center;
+            border:1px solid black;
+            padding:5px
+          
+        }
+        .geeks {
+            border-right:hidden;
+        }
+        .gfg {
+            border-collapse:separate;
+            border-spacing:0 15px;
+        }
+        h1 {
+            color:green;
+        }
+    </style>
+
+
+
+</head>
+<body>
+    
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+<!-- <table id="table">
+    <tr>
+        <th>Cotacao</th>
+        <th>PL</th>
+        <th>DY</th>
+    </tr>
+</table> -->
+
+
+
+<table  id="table">
+    <tr>
+      <td>Acao</td>
+      <td>Cotacao</td>
+      <td>DY</td>
+      <td>PL</td>
+      <td>ROE</td>
+      <td>ROIC</td>
+    </tr>
+  </table> 
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+//o data.json é baixado ao executar o brandon.py conectando com o localhost e baixando em um df pandas
+var source = "/data.json";
+
+$.getJSON(source, function(data){
+    var output;
+    output += `<tr>
+                <th>Acao</th>
+                <th>Cotacao</th>
+                <th>DY</th>
+                <th>PL</th>
+                <th>ROE</th>
+                <th>ROIC</th>
+               </tr>`
+
+
+    $.each(data, function(key, val){
+        
+        output += '<tr>';
+        output += '<td>' + key + '</td>';
+        output += '<td>' + val.Cotacao + '</td>';
+        output += '<td>' + val.DY + '</td>';
+        output += '<td>' + val.PL + '</td>';
+        output += '<td>' + val.ROE + '</td>';
+        output += '<td>' + val.ROIC + '</td>';
+        output += '</tr>';
+
+
+
+    });
+    console.log(data);
+    $('table').html(output);
+
+});
+
+
+
+
+
+
+
+
+</script>
+
+
+</body>
+</html>
